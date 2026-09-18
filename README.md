@@ -7,9 +7,8 @@ règles de divisibilité, puis retourne leurs noms dans une chaîne de caractèr
 Elle a été développée dans le cadre d'un test technique et expose également ce
 calcul via une API REST.
 
-Le document original de l'exercice n'est pas présent dans le projet fourni. Les
-règles ci-dessous correspondent au besoin communiqué ; les choix supplémentaires
-sont explicités dans la section « Hypothèses de conception ».
+Les règles métier ci-dessous sont issues du sujet du test technique. Les décisions
+non spécifiées par le sujet sont présentées dans la section Hypothèses de conception.
 
 ## Règles métier
 
@@ -104,9 +103,9 @@ n'est nécessaire.
 
 ## Installation et lancement
 
-Après récupération ou extraction du projet, ouvrir un terminal dans le dossier
-contenant `pom.xml` et les scripts du wrapper. Aucun dépôt distant n'est supposé
-par ces instructions.
+Après récupération du projet depuis
+[GitHub](https://github.com/BenkaddourW/diagnostic) ou extraction de ses sources,
+ouvrir un terminal dans le dossier contenant `pom.xml` et les scripts du wrapper.
 
 ### Windows — PowerShell
 
@@ -150,8 +149,9 @@ port alternatif, car `8080` était occupé dans l'environnement de vérification
 
 ### Linux/macOS — shell POSIX
 
-Les scripts sont fournis ; ces commandes équivalentes n'ont pas été exécutées
-sur Linux/macOS lors de la vérification Windows du projet.
+Le workflow GitHub Actions a réussi sur son environnement Ubuntu en exécutant
+`./mvnw -B -ntp clean verify`. Les autres commandes ci-dessous n'ont pas été
+vérifiées sous Linux ; aucune commande macOS n'a été exécutée.
 
 ```sh
 chmod +x mvnw
@@ -311,8 +311,9 @@ et n'effectue aucun déploiement ni publication de paquet. Aucun secret à fourn
 manuellement n'est nécessaire.
 
 Sur GitHub, ouvrir **Actions → CI → une exécution → Java 21 - Maven verify** pour
-consulter les journaux. La section **Artifacts** de l'exécution contient l'archive
-`test-and-coverage-reports`, conservée 14 jours, avec les fichiers disponibles :
+consulter les journaux. Si l'archivage a abouti, la section **Artifacts** propose
+l'archive `test-and-coverage-reports`, conservée 14 jours, avec les fichiers
+disponibles :
 
 - rapports Surefire XML et texte ;
 - rapport JaCoCo HTML, ses ressources et le XML ;
@@ -325,14 +326,11 @@ les rapports Surefire et les données brutes sont conservés s'ils sont présent
 Une absence totale de fichiers produit un avertissement, sans masquer le statut
 d'échec initial.
 
-Le dossier fourni ne contient pas de dépôt Git ni de remote GitHub vérifiable :
-aucun badge n'est ajouté et aucune exécution distante n'a été observée. Pour
-activer la CI, placer le contenu de ce projet à la racine du dépôt GitHub retenu
-(avec `pom.xml`, `mvnw` et `.github`), autoriser GitHub Actions si nécessaire,
-puis versionner et pousser les fichiers. Ces opérations restent à effectuer
-avec l'autorisation du propriétaire. Vérifier ensuite une exécution sur push et
-une sur Pull Request, ainsi que le téléchargement des artefacts. La réussite
-locale ne remplace pas cette validation sur le runner Linux de GitHub.
+Le projet est publié sur
+[GitHub](https://github.com/BenkaddourW/diagnostic). Le premier push sur `main`
+a déclenché le workflow CI, dont la première exécution affichait un statut de
+réussite sur Ubuntu. Le détail des artefacts et le déclenchement sur Pull Request
+restent à vérifier. Aucun badge n'est ajouté.
 
 ## API REST
 
@@ -441,6 +439,6 @@ un consommateur souhaitant exploiter des identifiants d'unités ; toute évoluti
 de ce contrat demanderait une décision explicite de compatibilité.
 
 Il n'y a ni persistance, ni configuration dynamique des règles, ni règles autres
-que la divisibilité par 3 et 5. Le workflow CI est fourni ; son activation et sa
-validation sur un dépôt GitHub restent à réaliser. Le formatage et la couverture
-sont également disponibles localement via Maven.
+que la divisibilité par 3 et 5. Le workflow CI a réussi lors du premier push sur
+`main` ; ses artefacts et son déclenchement sur Pull Request restent à vérifier.
+Le formatage et la couverture sont également disponibles localement via Maven.
