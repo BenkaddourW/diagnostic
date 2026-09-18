@@ -3,7 +3,12 @@ package com.softwaymedical.diagnostic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/** Entry point for the diagnostic HTTP application and its Spring configuration. */
+/**
+ * Point d'entrée de l'application Diagnostic et de sa configuration Spring Boot.
+ *
+ * @author Benkaddour Wafaa
+ * @version 0.0.1-SNAPSHOT
+ */
 @SpringBootApplication
 public class DiagnosticApplication {
 

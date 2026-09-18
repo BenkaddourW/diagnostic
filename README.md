@@ -1,5 +1,11 @@
 # Diagnostic médical — test technique
 
+## Informations du projet
+
+- Auteur : Benkaddour Wafaa
+- Version du projet (Maven) : `0.0.1-SNAPSHOT`
+- Version de l'API : `1.0.0`
+
 ## Présentation du projet
 
 Cette application Java associe un index de santé à des unités médicales selon des
